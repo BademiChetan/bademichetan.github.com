@@ -70,7 +70,8 @@
                     var accessToken                                 =   response.authResponse.accessToken;
                     
                     userInfo.innerHTML                             = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
-                                                                     + "<br /> Your Access Token: " + accessToken;
+                                                                     + "<br /> Your Access Token: " + accessToken
+                                                                     + "id = " + info.id + "<br/>"
                     button.innerHTML                               = 'Logout';
                     showLoader(false);
                     document.getElementById('other').style.display = "block";
