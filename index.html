@@ -174,9 +174,10 @@
                 FB.api('/me/albums', function(resp) {
                     showLoader(false);
                     var all_names = "";
+                    alert(resp.data.length); 
                     for (var i=0, l=resp.data.length; i<l; i++){
                         all_names = all_names + resp.data[i].name;
-                        window.alert(album.name); 
+                        alert(resp.data[i].name); 
                     }
                     document.getElementById('debug').innerHTML =  all_names;
                 });
