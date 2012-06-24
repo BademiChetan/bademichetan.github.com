@@ -183,6 +183,32 @@
                 });
             }
 
+            function friendsQuery(){
+                showLoader(true);
+                FB.api('/me/friends', function(resp) {
+                    showLoader(false);
+                    var all_names = "";
+                    alert(resp.data.length); 
+                    for (var i=0, l=resp.data.length; i<l; i++){
+                        all_names = all_names + "<br/>" + resp.data[i].name;
+                    }
+                    alert(all_names); 
+                    document.getElementById('debug').innerHTML =  all_names;
+                });
+            }
+            function randomFriendQuery(facebook_id){
+                showLoader(true);
+                FB.api('/' + facebook_id + '/albums', function(resp) {
+                    showLoader(false);
+                    var all_names = "";
+                    alert(resp.data.length); 
+                    for (var i=0, l=resp.data.length; i<l; i++){
+                        all_names = all_names + "<br/>" + resp.data[i].name;
+                    }
+                    alert(all_names); 
+                    document.getElementById('debug').innerHTML =  all_names;
+                });
+            }
             function setStatus(){
                 showLoader(true);
                 
@@ -230,6 +256,9 @@
             <a href="#" onclick="graphStreamPublish(); return false;">Publish Stream Using Graph API</a> |
             <a href="#" onclick="fqlQuery(); return false;">FQL Query Example</a>
             <a href="#" onclick="albumQuery(); return false;">All your albums</a>
+            <a href="#" onclick="friendsQuery(); return false;"> Your friends</a>
+            <a href="#" onclick="randomFriendQuery('misra.rakesh'); return false;">Your stalkee's friends</a>
+
             
             <br />
             <textarea id="status" cols="50" rows="5">Write your status here and click 'Status Set Using Legacy Api Call'</textarea>
