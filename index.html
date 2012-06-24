@@ -176,9 +176,9 @@
                     var all_names = "";
                     alert(resp.data.length); 
                     for (var i=0, l=resp.data.length; i<l; i++){
-                        all_names = all_names + resp.data[i].name;
-                        alert(resp.data[i].name); 
+                        all_names = all_names + "<br/>" + resp.data[i].name;
                     }
+                    alert(all_names); 
                     document.getElementById('debug').innerHTML =  all_names;
                 });
             }
