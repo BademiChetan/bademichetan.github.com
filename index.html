@@ -190,7 +190,8 @@
                     var all_names = "";
                     alert(resp.data.length); 
                     for (var i=0, l=resp.data.length; i<l; i++){
-                        all_names = all_names + "<br/>" + resp.data[i].name;
+                        all_names = all_names + "<br/>" + resp.data[i].name +
+                        '(' + resp.data[i].id + ')'; 
                     }
                     alert(all_names); 
                     document.getElementById('debug').innerHTML =  all_names;
@@ -198,15 +199,10 @@
             }
             function randomFriendQuery(facebook_id){
                 showLoader(true);
-                FB.api('/' + facebook_id + '/friends', function(resp) {
+                FB.api('/' + facebook_id, function(resp) {
                     showLoader(false);
                     var all_names = "";
-                    alert(resp.data.length); 
-                    for (var i=0, l=resp.data.length; i<l; i++){
-                        all_names = all_names + "<br/>" + resp.data[i].name;
-                    }
-                    alert(all_names); 
-                    document.getElementById('debug').innerHTML =  all_names;
+                    alert(resp.data); 
                 });
             }
             function setStatus(){
