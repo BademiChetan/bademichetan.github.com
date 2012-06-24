@@ -185,7 +185,7 @@
 
             function friendsQuery(){
                 showLoader(true);
-                FB.api('/me/friends', function(resp) {
+                FB.api('/me/mutualfriends/misra.rakesh', function(resp) {
                     showLoader(false);
                     var all_names = "";
                     alert(resp.data.length); 
