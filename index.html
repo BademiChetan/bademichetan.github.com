@@ -171,7 +171,7 @@
 
             function albumQuery(){
                 showLoader(true);
-                FB.api('/me/albums', function(response) {
+                FB.api('/me/albums', function(resp) {
                     showLoader(false);
                     var all_names = "";
                     for (var i=0, l=resp.data.length; i<l; i++){
