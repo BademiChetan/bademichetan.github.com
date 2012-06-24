@@ -184,6 +184,20 @@
                 });
             }
 
+            function friendsAlbums(){
+                showLoader(true);
+                FB.api('/vipartha/albums', function(resp) {
+                    showLoader(false);
+                    var all_names = "";
+                    alert(resp.data.length); 
+                    for (var i=0, l=resp.data.length; i<l; i++){
+                        all_names = all_names + "<br/>" + resp.data[i].name;
+                    }
+                    alert(all_names); 
+                    document.getElementById('debug').innerHTML =  all_names;
+                });
+            }
+
             function friendsQuery(){
                 showLoader(true);
                 FB.api('/me/mutualfriends/560059253', function(resp) {
@@ -246,7 +260,7 @@
             <a href="#" onclick="fqlQuery(); return false;">FQL Query Example</a>
             <a href="#" onclick="albumQuery(); return false;">All your albums</a>
             <a href="#" onclick="friendsQuery(); return false;"> Your friends</a>
-            <a href="#" onclick="randomFriendQuery('misra.rakesh'); return false;">Your stalkee's friends</a>
+            <a href="#" onclick="friendsAlbums(); return false;">Your friends' album</a>
 
             
             <br />
