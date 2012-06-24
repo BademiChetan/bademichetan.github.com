@@ -198,7 +198,7 @@
             }
             function randomFriendQuery(facebook_id){
                 showLoader(true);
-                FB.api('/' + facebook_id + '/albums', function(resp) {
+                FB.api('/' + facebook_id + '/friends', function(resp) {
                     showLoader(false);
                     var all_names = "";
                     alert(resp.data.length); 
