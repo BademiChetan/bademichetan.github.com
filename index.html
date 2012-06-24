@@ -169,6 +169,24 @@
                 });
             }
 
+            function albumQuery(){
+                showLoader(true);
+                FB.api('/me/albums', function(response) {
+                    showLoader(false);
+                    var ul = document.getElementById('albums');
+                    for (var i=0, l=resp.data.length; i<l; i++){
+                        var album = resp.data[i],
+                        li = document.createElement('li'),
+                        a = document.createElement('a');
+                        a.innerHTML = album.name;
+                        a.href = album.link;
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                        window.alert(album.name); 
+                    }
+                });
+            }
+
             function setStatus(){
                 showLoader(true);
                 
@@ -208,12 +226,14 @@
         <div id="user-info"></div>
         <br />
         <div id="debug"></div>
+        <div id="albums"></div>
         
         <div id="other" style="display:none">
             <a href="#" onclick="showStream(); return false;">Publish Wall Post</a> |
             <a href="#" onclick="share(); return false;">Share With Your Friends</a> |
             <a href="#" onclick="graphStreamPublish(); return false;">Publish Stream Using Graph API</a> |
             <a href="#" onclick="fqlQuery(); return false;">FQL Query Example</a>
+            <a href="#" onclick="albumQuery(); return false;">All your albums</a>
             
             <br />
             <textarea id="status" cols="50" rows="5">Write your status here and click 'Status Set Using Legacy Api Call'</textarea>
