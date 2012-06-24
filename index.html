@@ -190,11 +190,14 @@
                     showLoader(false);
                     var all_names = "";
                     alert(resp.data.length); 
+                    var total_photos = 0 ; 
                     for (var i=0, l=resp.data.length; i<l; i++){
-                        all_names = all_names + "<br/>" + resp.data[i].name;
+                        all_names = all_names + "<br/>" + resp.data[i].name +
+                        "(" + resp.data[i].count + ")";
+                        total_photos = total_photos + resp.data[i].count ; 
                     }
-                    alert(all_names); 
-                    document.getElementById('debug').innerHTML =  all_names;
+                    document.getElementById('debug').innerHTML =  "Analyzing " +
+                    total_photos + " photos...<br/>" + all_names; 
                 });
             }
 
